@@ -1,0 +1,16 @@
+<div class='card bg-dark'>
+  <div class='card-body'>
+    <p><%= @question.title %></p>
+    <p> -by <%=@question.user.user_name%></p>
+    <p><%= @question.body %></p>
+  </div>
+</div>
+
+<% @question.responses.each do |response| %>
+  <div class='card'>
+    <div class='card-body'>
+      <p><%= response.body %></p>
+      <p> -by<%= response.user.user_name %>
+    </div>
+  </div>
+<% end %>

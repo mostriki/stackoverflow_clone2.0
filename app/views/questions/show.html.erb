@@ -5,12 +5,15 @@
     <p><%= @question.body %></p>
   </div>
 </div>
-
+<% if @question.responses %>
+  <p><%= @question.responses.count %> Answers</p>
+<% end %>
+<p><%= link_to "Answer this Question", new_question_response_path(@question) %><p>
 <% @question.responses.each do |response| %>
   <div class='card'>
     <div class='card-body'>
       <p><%= response.body %></p>
-      <p> -by<%= response.user.user_name %>
+      <p> -by <%= response.user.user_name %>
     </div>
   </div>
 <% end %>

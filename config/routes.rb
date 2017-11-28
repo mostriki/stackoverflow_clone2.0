@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+    root :to => 'questions#index'
   get '/signup' => 'users#new'
   post '/users' => 'users#create'
 
@@ -8,10 +9,10 @@ Rails.application.routes.draw do
 
   resources :questions do
     resources :responses
-    resources :comments
+    resources :question_comments
   end
 
   resources :responses do
-    resources :comments
+    resources :response_comments
   end
 end

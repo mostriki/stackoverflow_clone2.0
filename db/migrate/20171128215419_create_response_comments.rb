@@ -1,9 +1,8 @@
-class CreateComments < ActiveRecord::Migration[5.1]
+class CreateResponseComments < ActiveRecord::Migration[5.1]
   def change
-    create_table :comments do |t|
+    create_table :response_comments do |t|
       t.column :user_id, :integer
       t.column :response_id, :integer
-      t.column :question_id, :integer
       t.column :body, :string
 
       t.timestamps

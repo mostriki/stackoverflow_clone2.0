@@ -1,0 +1,8 @@
+<%= render "layouts/errors", :object =>@response_comment %>
+
+<%= form_for [@response, @response_comment] do |f| %>
+  <%= f.label :body %><br>
+  <%= f.text_area :body %><br>
+  <%= f.hidden_field(:user_id, :value => current_user.id) %>
+  <%= f.submit %>
+<% end %>

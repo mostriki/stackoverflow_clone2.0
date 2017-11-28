@@ -4,10 +4,17 @@
     <p> -by <%=@question.user.user_name%></p>
     <p><%= @question.body %></p>
   </div>
+  <p><%= link_to "Improve this Question", new_question_question_comment_path(@question)%></p>
 </div>
+
+<% @question.question_comments.each do |question_comment| %>
+  <p><%= question_comment.body %></p>
+  <p> -by <%= question_comment.user.user_name %>
+<% end %>
 <% if @question.responses %>
   <p><%= @question.responses.count %> Answers</p>
 <% end %>
+
 <p><%= link_to "Answer this Question", new_question_response_path(@question) %><p>
 <% @question.responses.each do |response| %>
   <div class='card'>
@@ -15,5 +22,10 @@
       <p><%= response.body %></p>
       <p> -by <%= response.user.user_name %>
     </div>
+    <% response.response_comments.each do |response_comment| %>
+      <p><%= response_comment.body %> </p>
+      <p> -by <%= response_comment.user.user_name %> </p>
+    <% end %>
+      <p><%= link_to "Improve this Response", new_response_response_comment_path(response)%></p>
   </div>
 <% end %>

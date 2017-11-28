@@ -1,7 +1,6 @@
 require 'rails_helper'
 
-describe Comment do
+describe ResponseComment do
   it { should belong_to :user }
   it { should belong_to :response }
-  it { should belong_to :question }
 end

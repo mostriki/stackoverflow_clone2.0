@@ -1,4 +1,6 @@
 class ResponsesController < ApplicationController
+  before_action :authorize, only: [:new, :create, :edit, :destroy, :update]
+  
   def new
     @question = Question.find(params[:question_id])
     @response = @question.responses.new

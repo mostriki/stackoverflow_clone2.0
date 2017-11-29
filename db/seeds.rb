@@ -4,7 +4,7 @@ Response.destroy_all
 Comment.destroy_all
 
 
-11.times do
+12.times do
   User.create!(email: Faker::Internet.email,
               user_name: Faker::Name.unique.name,
               password: "password")

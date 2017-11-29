@@ -1,7 +1,7 @@
 User.destroy_all
 Question.destroy_all
 Response.destroy_all
-QuestionComment.destroy_all
+Comment.destroy_all
 
 
 12.times do

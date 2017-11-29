@@ -1,31 +1,44 @@
-<div class='card bg-dark'>
+<div class='card bg-light'>
   <div class='card-body'>
+    <h3>Question:</h3>
     <p><%= @question.title %></p>
     <p> -by <%=@question.user.user_name%></p>
     <p><%= @question.body %></p>
   </div>
-  <p><%= link_to "Improve this Question", new_question_question_comment_path(@question)%></p>
+  <p><%= link_to "Improve this Question", new_question_comment_path(@question)%></p>
 </div>
 
-<% @question.question_comments.each do |question_comment| %>
-  <p><%= question_comment.body %></p>
-  <p> -by <%= question_comment.user.user_name %>
-<% end %>
-<% if @question.responses %>
-  <p><%= @question.responses.count %> Answers</p>
-<% end %>
+
+<% @question.comments.each do |comment| %>
+  <div class='card bg-primary'>
+    <div class='card-body'>
+      <p><%= comment.body %><br>
+        -by <%= comment.user.user_name %>
+    </div>
+  </div>
+  <% end %>
+  <% if @question.responses %>
+    <p><%= @question.responses.count %> Answers</p>
+  <% end %>
+
 
 <p><%= link_to "Answer this Question", new_question_response_path(@question) %><p>
 <% @question.responses.each do |response| %>
-  <div class='card'>
+  <div class='card bg-light'>
     <div class='card-body'>
+      <h3>Answer:</h3>
       <p><%= response.body %></p>
       <p> -by <%= response.user.user_name %>
     </div>
-    <% response.response_comments.each do |response_comment| %>
-      <p><%= response_comment.body %> </p>
-      <p> -by <%= response_comment.user.user_name %> </p>
-    <% end %>
-      <p><%= link_to "Improve this Response", new_response_response_comment_path(response)%></p>
   </div>
+    <% response.comments.each do |comment| %>
+    <div class='card bg-success'>
+      <div class='card-body'>
+        <p><%= comment.body %><br>
+         -by <%= comment.user.user_name %> </p>
+      </div>
+    </div>
+    <% end %>
+      <p><%= link_to "Improve this Response", new_response_comment_path(response)%></p>
+
 <% end %>

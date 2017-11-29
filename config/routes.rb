@@ -9,10 +9,10 @@ Rails.application.routes.draw do
 
   resources :questions do
     resources :responses
-    resources :question_comments
+    resources :comments
   end
 
   resources :responses do
-    resources :response_comments
+    resources :comments
   end
 end

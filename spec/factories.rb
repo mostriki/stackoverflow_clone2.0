@@ -4,11 +4,13 @@ FactoryBot.define do
     user_name('charlie')
     email('a@b.com')
     password('password')
+    admin(true)
   end
 
   factory(:question) do
     title('Title Test')
     body('This is a body!')
+    user_id(1)
   end
 
   factory(:comment) do

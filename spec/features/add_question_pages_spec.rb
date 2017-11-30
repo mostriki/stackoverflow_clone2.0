@@ -2,8 +2,7 @@ require 'rails_helper'
 
 describe 'test for adding questions to pages' do
   it 'will test user adding a new question' do
-    user = FactoryBot.create(:user)
-    user.save
+    FactoryBot.create(:user)
     visit signin_path
     fill_in 'Email', :with => 'a@b.com'
     fill_in 'Password', :with => 'password'

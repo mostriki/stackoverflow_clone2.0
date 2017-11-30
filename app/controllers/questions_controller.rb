@@ -1,7 +1,6 @@
 class QuestionsController < ApplicationController
-  before_action :authorize, only: [:new, :create, :edit, :destroy, :update] do
-      redirect_to new_user_session_path unless current_user && current_user.admin
-    end
+  before_action :authorize, only: [:new, :create]
+  before_action :authorize_admin, only: [:edit, :update, :destroy]
 
   def index
     @questions = Question.all

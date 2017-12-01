@@ -14,7 +14,18 @@ FactoryBot.define do
   end
 
   factory(:question) do
+    title('Title Test')
+    body('This is a body!')
+  end
+
+  factory(:edit_question_admin, class: Question) do
     user_id { FactoryBot.create(:admin).id }
+    title('Title Test')
+    body('This is a body!')
+  end
+
+  factory(:edit_question_authorization_failure, class: Question) do
+    user_id { FactoryBot.create(:user).id }
     title('Title Test')
     body('This is a body!')
   end
